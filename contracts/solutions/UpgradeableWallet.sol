@@ -1,11 +1,12 @@
 pragma solidity ^0.4.24;
 
 import "openzeppelin-eth/contracts/token/ERC20/IERC20.sol";
+import "zos-lib/contracts/Initializable.sol";
 
-contract Wallet {
+contract UpgradeableWallet is Initializable {
   address _owner;
   
-  constructor(address owner) public {
+  function initialize(address owner) initializer public {
     _owner = owner;
   }
   
