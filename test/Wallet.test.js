@@ -1,7 +1,7 @@
 require('chai').should();
 const behavesLikeWallet = require('./Wallet.behaviour');
 
-const Wallet = artifacts.require('Wallet');
+const Wallet = artifacts.require('OldWallet');
 
 contract('Wallet', function (accounts) {
   const [walletOwner] = accounts;

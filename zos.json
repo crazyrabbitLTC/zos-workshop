@@ -1,0 +1,11 @@
+{
+  "zosversion": "2",
+  "name": "my-wallet",
+  "version": "0.1.0",
+  "contracts": {
+    "Wallet": "UpgradeableWallet"
+  },
+  "dependencies": {
+    "openzeppelin-eth": "^2.0.0"
+  }
+}
