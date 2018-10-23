@@ -15,7 +15,7 @@ contract MultiOwnerWallet is Initializable {
     return _owner;
   }
 
-  function grantAccess(address who) {
+  function grantAccess(address who) public {
     require(msg.sender == _owner);
     _allowedToTransfer[who] = true;
   }

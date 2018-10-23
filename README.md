@@ -51,10 +51,10 @@ npx zos session --network local --from 0x22d491bde2303f2f43325b2108d26f1eaba1e32
 We can now create our wallet instance, and set one of our local accounts as the owner:
 
 ```sh
-npx zos create Wallet --init --args 0xffcf8fdee72ac11b5c542428b35eef5769c409f0 --network local
+npx zos create Wallet --init --args 0xffcf8fdee72ac11b5c542428b35eef5769c409f0
 ```
 
-### Linking EVM Package
+### Linking an EVM Package
 
 To play around with the wallet, we'll need an ERC20 contract. We can use one of the contracts provided by `openzeppelin-eth` to do this.
 
@@ -77,7 +77,7 @@ function initialize(
 We'll create an instance of the `StandaloneERC20` contract by running the following, replacing the wallet address:
 
 ```sh
-npx zos create openzeppelin-eth/StandaloneERC20 --init --args 'MyToken,MYT,8,100e8,WALLET_ADDRESS,[],[]'
+npx zos create openzeppelin-eth/StandaloneERC20 --init --args 'MyToken,MYT,8,10000000000,WALLET_ADDRESS,[],[]'
 ```
 
 ### Testing our wallet
@@ -88,10 +88,10 @@ We can now fire up a truffle console to interact with our wallet and test it.
 npx truffle console --network local
 ```
 ```js
-> wallet = UpgradeableWallet.at(WALLET_ADDRESS)
-> token = IERC20.at(TOKEN_ADDRESS)
-> someone = '0x1df62f291b2e969fb0849d99d9ce41e2f137006e'
-> owner = '0xffcf8fdee72ac11b5c542428b35eef5769c409f0'
+> wallet = UpgradeableWallet.at(WALLET_ADDRESS) // replace with actual wallet address
+> token = IERC20.at(TOKEN_ADDRESS) // replace with actual token address
+> someone = web3.eth.accounts[3] // any random account
+> owner = '0xffcf8fdee72ac11b5c542428b35eef5769c409f0' // the same address we used when initializing the wallet
 > token.balanceOf(wallet.address).then(x => x.toNumber())
 > wallet.transferERC20(token.address, someone, 100, { from: owner })
 > token.balanceOf(someone).then(x => x.toNumber())
@@ -126,7 +126,7 @@ We will go through different independent challenges that will require us to upgr
 
 ### Security
 
-Our `transferERC20` function currently allows anyone to transfer the wallet's token. We need to add a check that only the `owner` of the contract can do so, and upgrade to the new version.
+Our `transferERC20` function currently allows anyone to transfer the wallet's token. We need to add a check that only the `owner` of the contract can do so, and upgrade to the new version. Bonus points for solving this using `Ownable` from `openzeppelin-eth`.
 
 ### Compliance
 
