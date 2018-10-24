@@ -148,3 +148,4 @@ To avoid having a single account with the privileges to freely upgrade our walle
 
 * [ZeppelinOS documentation](https://docs.zeppelinos.org/)
 * [Exploring upgradeability governance in ZeppelinOS with a Gnosis MultiSig](https://blog.zeppelinos.org/exploring-upgradeability-governance-in-zeppelinos-with-a-gnosis-multisig/)
+* [Slides from Web3 Summit 2018 workshop](https://docs.google.com/presentation/d/1oEWkM-n89bKfw0tySRjmhGCEVoeznfk8bOL93vLVkSs/edit?usp=sharing)
